@@ -106,3 +106,46 @@ git add .
 git commit -m "Initial TermPet MVP"
 gh repo create <your-user>/<your-repo> --public --source=. --remote=origin --push
 ```
+
+## 创建 Release
+
+当前项目还是 SwiftPM 形态，没有单独的 `.app` 安装包，所以建议先发一个源码型 Release。
+
+```bash
+cd /Users/elevaene/code/vibe-coding-tools/TermPet
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+然后到 GitHub 仓库页面：
+
+1. 打开 `Releases`
+2. 点 `Create a new release`
+3. 选择刚推送的 `v0.1.0`
+4. 填标题和说明
+5. 发布
+
+建议 Release 文案包含：
+
+- 这是哪个版本
+- 主要功能
+- 当前如何运行
+- 已知限制
+
+## 其他人怎么用
+
+现在这个仓库最直接的用法是源码运行：
+
+```bash
+git clone https://github.com/Elevaene/TermPet.git
+cd TermPet
+swift run TermPet
+```
+
+如果要让终端事件监听生效，再执行：
+
+```bash
+Scripts/install-zsh-hook.sh
+```
+
+如果你后面给 Release 附上了编译好的 `.app.zip`，其他人就可以直接下载、解压、双击打开，不需要自己装 Swift 工具链。
